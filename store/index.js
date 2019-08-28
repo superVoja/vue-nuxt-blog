@@ -1,8 +1,7 @@
 import Vuex from "vuex";
-
 import appModule from "./modules/app-logic";
 
-const createStore = () => {
+const store = () => {
   return new Vuex.Store({
     namespaced: true,
     modules: {
@@ -10,4 +9,5 @@ const createStore = () => {
     }
   });
 };
-export default createStore;
+
+export default store;

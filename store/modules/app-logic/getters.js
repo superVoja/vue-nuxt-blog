@@ -1,1 +1,3 @@
-export default {};
+export default {
+  getPosts: state => state.loadedPosts
+};

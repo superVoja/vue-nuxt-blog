@@ -2,7 +2,22 @@ import actions from "./actions";
 import getters from "./getters";
 import mutations from "./mutations";
 
-const defaultState = {};
+const defaultState = {
+  loadedPosts: [
+    {
+      id: "1",
+      title: "First post",
+      previewText: "This is our first post",
+      thumbnail: ""
+    },
+    {
+      id: "2",
+      title: "Second post",
+      previewText: "This is our first post",
+      thumbnail: ""
+    }
+  ]
+};
 
 const inBrowser = typeof window !== "undefined";
 // if in browser, use pre-fetched state injected by SSR
