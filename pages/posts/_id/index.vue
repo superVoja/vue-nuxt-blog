@@ -1,5 +1,0 @@
-<template>
-  <div>
-    <h1>Single Post Page</h1>
-  </div>
-</template>

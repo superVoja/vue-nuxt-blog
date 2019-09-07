@@ -1,13 +1,12 @@
 <template>
-  <section class="container">
-    <h1>Homepage</h1>
+  <section id="posts">
     <PostPreview
       v-for="post in posts"
       :key="post.id"
       :title="post.title"
-      :id="post.id"
       :excerpt="post.previewText"
       :thumbnailImage="post.thumbnailUrl"
+      :id="post.id"
     />
   </section>
 </template>
@@ -40,5 +39,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#posts {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (min-width: 35rem) {
+  #posts {
+    flex-direction: row;
+  }
+}
 </style>

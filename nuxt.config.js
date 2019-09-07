@@ -49,12 +49,28 @@ module.exports = {
     [
       "storyblok-nuxt",
       {
-        accessToken: "K7kKRIRMfsAnFczuHUDrUgtt",
+        accessToken:
+          process.env.NODE_ENV == "production"
+            ? "N8TCFBqqXRKBF3mZNdJwlgtt"
+            : "GLf40XFowbuHx8hHJH5pFgtt",
         cacheProvider: "memory"
       }
     ]
   ],
 
+  generate: {
+    routes: function() {
+      return axios
+        .get(
+          "https://api.storyblok.com/v1/cdn/stories?version=published&token=LNmSxvNQyuwC2Ghnlwr1mAtt&starts_with=blog&cv=" +
+            Math.floor(Date.now() / 1e3)
+        )
+        .then(res => {
+          const blogPosts = res.data.stories.map(bp => bp.full_slug);
+          return ["/", "/blog", "/about", ...blogPosts];
+        });
+    }
+  },
   /*
    ** Build configuration
    */
