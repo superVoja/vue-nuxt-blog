@@ -1,10 +1,10 @@
 <template>
   <nuxt-link :to="'/blog/' + id">
     <article class="post-preview">
-      <div :style="{backgroundImage: 'url('+  thumbnailImage +')'}" class="post-preview-thumbnail"></div>
+      <div :style="{backgroundImage: 'url('+  thumbnailUrl +')'}" class="post-preview-thumbnail"></div>
       <div class="post-preview-content">
-        <h1>{{title }}</h1>
-        <p>{{ excerpt }}</p>
+        <h1>{{ title }}</h1>
+        <p>{{ summary }}</p>
       </div>
     </article>
   </nuxt-link>
@@ -21,15 +21,11 @@ export default {
       type: String,
       required: true
     },
-    excerpt: {
+    summary: {
       type: String,
       required: true
     },
-    thumbnailImage: {
-      type: String,
-      required: true
-    },
-    thumbnailImage: {
+    thumbnailUrl: {
       type: String,
       required: true
     }
