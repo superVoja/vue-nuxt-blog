@@ -1,15 +1,17 @@
 <template>
   <section class="container">
-    <h1>Homepage</h1>
-    <PostList :posts="loadedPosts" />
+    <PostList :posts="loadedPosts" class="post-list" />
+    <Aside class="aside" />
   </section>
 </template>
 
 <script>
 import PostList from "@/components/Posts/PostList";
+import Aside from "@/components/Aside/Aside";
 export default {
   components: {
-    PostList
+    PostList,
+    Aside
   },
   computed: {
     loadedPosts() {
@@ -44,6 +46,10 @@ export default {
   // }
 };
 </script>
-
-<style>
+<style scoped>
+.container {
+  display: flex;
+}
 </style>
+
+
