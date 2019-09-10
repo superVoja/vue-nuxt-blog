@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="'/blog/' + id">
+  <nuxt-link :to="'/recipes/' + id">
     <article class="post-preview">
       <div :style="{backgroundImage: 'url('+  thumbnailUrl +')'}" class="post-preview-thumbnail"></div>
       <div class="post-preview-content">

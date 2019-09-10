@@ -14,7 +14,7 @@ const createStore = () => {
         return context.app.$storyapi
           .get("cdn/stories", {
             version: context.isDev ? "draft" : "published",
-            starts_with: "blog/"
+            starts_with: "recipes/"
           })
           .then(res => {
             vuexContext.commit("setPosts", res.data.stories);

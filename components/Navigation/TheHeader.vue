@@ -12,7 +12,7 @@
             <nuxt-link to="/about">about.</nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link to="/blog">recipes.</nuxt-link>
+            <nuxt-link to="/recipes">recipes.</nuxt-link>
           </li>
           <li class="nav-item">
             <nuxt-link to="/streetfood">streetfood.</nuxt-link>
