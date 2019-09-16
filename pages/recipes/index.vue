@@ -1,7 +1,7 @@
 <template>
   <div class="all-posts">
     <div class="search-wrapper">
-      <input type="text" placeholder="Search title.." />
+      <input type="text" placeholder="Search title.." v-model="search" />
     </div>
     <section id="posts">
       <PostList :posts="loadedPosts" />
@@ -16,16 +16,26 @@ export default {
   components: {
     PostList
   },
+  data() {
+    return {
+      search: ""
+    };
+  },
+
   computed: {
     loadedPosts() {
-      return this.$store.getters.loadedPosts.map(bp => {
-        return {
-          id: bp.slug,
-          title: bp.content.title,
-          previewText: bp.content.summary,
-          thumbnailUrl: bp.content.thumbnail
-        };
-      });
+      return this.$store.getters.loadedPosts
+        .map(bp => {
+          return {
+            id: bp.slug,
+            title: bp.content.title,
+            previewText: bp.content.summary,
+            thumbnailUrl: bp.content.thumbnail
+          };
+        })
+        .filter(post => {
+          return post.title.toLowerCase().includes(this.search.toLowerCase());
+        });
     }
   }
 
@@ -73,6 +83,7 @@ export default {
 }
 .search-wrapper {
   position: relative;
+  margin-top: 4rem;
 }
 
 .search-wrapper input {

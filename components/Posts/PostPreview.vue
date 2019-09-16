@@ -1,12 +1,10 @@
 <template>
   <nuxt-link :to="'/recipes/' + id">
-    <article class="post-preview">
-      <div :style="{backgroundImage: 'url('+  thumbnailUrl +')'}" class="post-preview-thumbnail"></div>
-      <div class="post-preview-content">
-        <h1>{{ title }}</h1>
-        <p>{{ summary }}</p>
-      </div>
-    </article>
+    <figure class="post-preview">
+      <img :src="thumbnailUrl" alt />
+      <h2>{{ title}}</h2>
+      <p>{{ summary }}</p>
+    </figure>
   </nuxt-link>
 </template>
 
@@ -40,26 +38,36 @@ a {
 }
 
 .post-preview {
-  border-radius: 3px;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.5);
-  width: 90%;
-  margin: 1rem;
-  height: 20rem;
+  margin: 25px 0 25px 0;
+  padding: 12px;
+  background: #1e1e1e;
+  transition: all 200ms;
+  display: flex;
+  flex-direction: column;
+}
+.post-preview:hover {
+  transform: translateY(-6px);
+  transition: all 200ms;
 }
 .post-preview-thumbnail {
-  background-position: center;
-  background-size: cover;
   width: 100%;
-  height: 10rem;
+  height: 100%;
+  margin: 0 0 30px 0;
+  object-fit: cover;
 }
-.post-preview-content {
+.post-preview h2 {
   text-align: center;
-  padding: 1rem;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.post-preview p {
+  color: #d3d3d3;
+  text-align: center;
 }
 
-@media (min-width: 35) {
-  .post-preview {
-    width: 25rem;
-  }
+@media (min-width: 35rem) {
 }
 </style>

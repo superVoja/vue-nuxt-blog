@@ -3,7 +3,13 @@
     <div class="post-thumbnail" :style="{backgroundImage: 'url(' + image+ ')'}"></div>
     <section class="post-content">
       <h1>{{title}}</h1>
+      <h4>about</h4>
+      <p>{{desicription}}</p>
+      <h4>how it's done</h4>
       <p>{{content}}</p>
+      <h4>ingredients</h4>
+      <p>{{ingredients}}</p>
+      <img :src="photos" alt />
     </section>
   </div>
 </template>
@@ -11,7 +17,7 @@
 export default {
   asyncData(context) {
     return context.app.$storyapi
-      .get("cdn/stories/blog/" + context.params.postId, {
+      .get("cdn/stories/recipes/" + context.params.postId, {
         version: process.env.NODE_ENV == "production" ? "published" : "draft"
       })
       .then(res => {
@@ -19,7 +25,10 @@ export default {
           blok: res.data.story.content,
           image: res.data.story.content.thumbnail,
           title: res.data.story.content.title,
-          content: res.data.story.content.content
+          desicription: res.data.story.content.desicription,
+          content: res.data.story.content.content,
+          ingredients: res.data.story.content.ingredients,
+          photos: res.data.story.content.photos
         };
       });
   }
@@ -40,5 +49,6 @@ export default {
 
 .post-content p {
   white-space: pre-line;
+  color: #d3d3d3;
 }
 </style>

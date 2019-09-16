@@ -1,25 +1,11 @@
 <template>
   <section id="about-page">
-    <h1>{{title}}</h1>
-    <p>{{content}}</p>
+    <h1>How it all came to be</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et iure aliquam explicabo minima laudantium asperiores iusto repudiandae deleniti totam, beatae quos dolore recusandae rem! Porro ducimus corrupti esse similique inventore?</p>
   </section>
 </template>
 
 <script>
-export default {
-  asyncData(context) {
-    return context.app.$storyapi
-      .get("cdn/stories/about", {
-        version: context.isDev ? "draft" : "published"
-      })
-      .then(res => {
-        return {
-          title: res.data.story.content.title,
-          content: res.data.story.content.content
-        };
-      });
-  }
-};
 </script>
 
 <style scoped>
@@ -27,8 +13,12 @@ export default {
   width: 80%;
   max-width: 500px;
   margin: 0 auto;
+  height: 100vh;
+}
+#about-page h1 {
+  color: #d3d3d3;
 }
 #about-page p {
-  white-space: pre-line;
+  color: #d3d3d3;
 }
 </style>

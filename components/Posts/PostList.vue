@@ -12,6 +12,7 @@
 </template>
 <script>
 import PostPreview from "@/components/Posts/PostPreview";
+
 export default {
   components: {
     PostPreview
@@ -26,11 +27,9 @@ export default {
 </script>
 <style scoped>
 .post-list {
-  display: flex;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+  grid-gap: 1rem;
 }
 </style>
