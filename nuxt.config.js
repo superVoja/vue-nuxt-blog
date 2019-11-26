@@ -1,4 +1,5 @@
 const pkg = require("./package");
+const axios = require("axios");
 
 module.exports = {
   mode: "universal",
@@ -18,7 +19,7 @@ module.exports = {
       }
     ],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico?v=2" },
       {
         rel: "stylesheet",
         href:
@@ -55,19 +56,23 @@ module.exports = {
             : "GLf40XFowbuHx8hHJH5pFgtt",
         cacheProvider: "memory"
       }
-    ]
+    ],
+    "@nuxtjs/axios"
   ],
+  axios: {
+    // proxyHeaders: false
+  },
 
   generate: {
     routes: function() {
       return axios
         .get(
-          "https://api.storyblok.com/v1/cdn/stories?version=published&token=LNmSxvNQyuwC2Ghnlwr1mAtt&starts_with=blog&cv=" +
+          "https://api.storyblok.com/v1/cdn/stories?version=published&token=N8TCFBqqXRKBF3mZNdJwlgtt&starts_with=recipes&cv=" +
             Math.floor(Date.now() / 1e3)
         )
         .then(res => {
           const blogPosts = res.data.stories.map(bp => bp.full_slug);
-          return ["/", "/blog", "/about", ...blogPosts];
+          return ["/", "/recipes", "/streetfood", ...blogPosts];
         });
     }
   },
