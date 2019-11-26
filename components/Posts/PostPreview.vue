@@ -44,6 +44,7 @@ a {
   transition: all 200ms;
   display: flex;
   flex-direction: column;
+  max-height: 40rem;
 }
 .post-preview:hover {
   transform: translateY(-6px);
@@ -53,8 +54,13 @@ a {
   width: 100%;
   height: 100%;
   margin: 0 0 30px 0;
-  object-fit: cover;
+  object-fit: contain;
 }
+.post-preview img {
+  height: 100%;
+  width: 100%;
+}
+
 .post-preview h2 {
   text-align: center;
   color: #fff;
